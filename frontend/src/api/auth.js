@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-// Use form-urlencoded for OAuth2 login
-const loginClient = axios.create({ baseURL: '/api' })
-
 import api from './axiosInstance'
+
+const apiBaseUrl = import.meta.env.VITE_API_URL || ''
+
+// Use form-urlencoded for OAuth2 login
+const loginClient = axios.create({ baseURL: `${apiBaseUrl}/api` })
 
 export const authAPI = {
   login: async (username, password) => {
